@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+
+
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    api 'com.android.support:appcompat-v7:27.1.1'
+    api 'com.android.support:support-v4:27.1.1'
+    //沉浸式
+    api 'com.gyf.immersionbar:immersionbar:2.3.2-beta02'
+    //design
+    api 'com.android.support:design:27.1.1'
+    //适配器辅助类
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44'
+    //刷新框架
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'
+    //图片加载框架
+    api files('libs/glide-3.8.0.jar')
+    //gson
+    api 'com.google.code.gson:gson:2.8.0'
+}

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">豆豆赚钱</string>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">Gk7d63DpZbHaGzcMAI1lschj1mZU4ksvOXqog</string>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentServer">http://192.168.20.43:3000/</string>
+</resources>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="91" id="KGk-i7-Jjw" customClass="TaskCell">
+            <rect key="frame" x="0.0" y="0.0" width="328" height="93"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="328" height="92.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3x-0D-6a8">
+                        <rect key="frame" x="17" y="7" width="294" height="79.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是任务名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dR5-cT-zQY">
+                                <rect key="frame" x="77" y="13" width="98" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="006_button" translatesAutoresizingMaskIntoConstraints="NO" id="eNx-8g-Zoo">
+                                <rect key="frame" x="10" y="13" width="53" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="M38-j9-LvX"/>
+                                    <constraint firstAttribute="width" constant="53" id="ebs-rC-X6f"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩余1245份" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiV-EJ-vv9">
+                                <rect key="frame" x="77" y="51" width="65" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1.3元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpM-9G-Jnc">
+                                <rect key="frame" x="234" y="29.5" width="47" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.96470588235294119" green="0.28627450980392155" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wpM-9G-Jnc" firstAttribute="centerY" secondItem="eNx-8g-Zoo" secondAttribute="centerY" id="G4t-yh-GHP"/>
+                            <constraint firstItem="JiV-EJ-vv9" firstAttribute="bottom" secondItem="eNx-8g-Zoo" secondAttribute="bottom" id="Gm8-RY-vHc"/>
+                            <constraint firstItem="eNx-8g-Zoo" firstAttribute="top" secondItem="x3x-0D-6a8" secondAttribute="top" constant="13" id="Kuj-OG-fZN"/>
+                            <constraint firstItem="dR5-cT-zQY" firstAttribute="top" secondItem="eNx-8g-Zoo" secondAttribute="top" id="TnL-l5-stD"/>
+                            <constraint firstItem="eNx-8g-Zoo" firstAttribute="leading" secondItem="x3x-0D-6a8" secondAttribute="leading" constant="10" id="gl8-R5-9xw"/>
+                            <constraint firstItem="dR5-cT-zQY" firstAttribute="leading" secondItem="eNx-8g-Zoo" secondAttribute="trailing" constant="14" id="how-hA-J0L"/>
+                            <constraint firstItem="JiV-EJ-vv9" firstAttribute="leading" secondItem="eNx-8g-Zoo" secondAttribute="trailing" constant="14" id="kf5-nB-ac0"/>
+                            <constraint firstAttribute="bottom" secondItem="eNx-8g-Zoo" secondAttribute="bottom" constant="13.5" id="omU-1Z-bcJ"/>
+                            <constraint firstAttribute="trailing" secondItem="wpM-9G-Jnc" secondAttribute="trailing" constant="13" id="wPH-ma-3hV"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="x3x-0D-6a8" secondAttribute="trailing" constant="17" id="9qt-np-EHB"/>
+                    <constraint firstItem="x3x-0D-6a8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="Grm-ZR-L5H"/>
+                    <constraint firstItem="x3x-0D-6a8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="17" id="oRB-tw-HEe"/>
+                    <constraint firstAttribute="bottom" secondItem="x3x-0D-6a8" secondAttribute="bottom" constant="6" id="x4Y-k3-sZL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="backView" destination="x3x-0D-6a8" id="3bS-d0-fez"/>
+            </connections>
+            <point key="canvasLocation" x="139.19999999999999" y="176.76161919040482"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="006_button" width="300" height="60"/>
+    </resources>
+</document>

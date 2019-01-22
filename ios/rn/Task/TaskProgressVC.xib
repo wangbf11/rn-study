@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskProgressVC">
+            <connections>
+                <outlet property="backButton" destination="4HU-cC-PkO" id="dbg-JA-QQX"/>
+                <outlet property="tableView" destination="yt7-Fp-lhB" id="kye-5g-PWD"/>
+                <outlet property="tableViewCOnstraintHeight" destination="BSc-QT-Q3w" id="Xec-KE-uGJ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y35-Ic-e5j">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="4Y7-16-d8x"/>
+                    </constraints>
+                    <items>
+                        <navigationItem title="任务进度" id="ZcL-sa-x5O">
+                            <barButtonItem key="leftBarButtonItem" id="dbJ-Vn-o4m">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4HU-cC-PkO">
+                                    <rect key="frame" x="16" y="6" width="32" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="back_16x16"/>
+                                    <connections>
+                                        <action selector="backAction:" destination="-1" eventType="touchUpInside" id="FXb-dS-bDR"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEO-gl-IBV">
+                    <rect key="frame" x="0.0" y="65" width="375" height="602"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yt7-Fp-lhB">
+                            <rect key="frame" x="0.0" y="5" width="375" height="425"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="425" id="BSc-QT-Q3w"/>
+                            </constraints>
+                        </tableView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="yt7-Fp-lhB" secondAttribute="trailing" id="38f-gS-fXr"/>
+                        <constraint firstItem="yt7-Fp-lhB" firstAttribute="top" secondItem="TEO-gl-IBV" secondAttribute="top" constant="5" id="Img-TY-jXm"/>
+                        <constraint firstItem="yt7-Fp-lhB" firstAttribute="leading" secondItem="TEO-gl-IBV" secondAttribute="leading" id="QMD-4H-ULh"/>
+                        <constraint firstItem="yt7-Fp-lhB" firstAttribute="width" secondItem="TEO-gl-IBV" secondAttribute="width" id="fD5-J4-S9U"/>
+                        <constraint firstAttribute="bottom" secondItem="yt7-Fp-lhB" secondAttribute="bottom" constant="5" id="lna-Gj-uMX"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="TEO-gl-IBV" firstAttribute="top" secondItem="Y35-Ic-e5j" secondAttribute="bottom" constant="1" id="1Tw-9m-Ph6"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="TEO-gl-IBV" secondAttribute="bottom" id="9bH-is-zqM"/>
+                <constraint firstItem="TEO-gl-IBV" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Prm-ZS-fog"/>
+                <constraint firstItem="Y35-Ic-e5j" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="Rm4-6Z-9tX"/>
+                <constraint firstItem="TEO-gl-IBV" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="XAY-g0-MOB"/>
+                <constraint firstItem="Y35-Ic-e5j" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="bN5-gk-cWO"/>
+                <constraint firstItem="Y35-Ic-e5j" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="uIy-sU-gch"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="-138.40000000000001" y="-22.03898050974513"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="back_16x16" width="32" height="32"/>
+    </resources>
+</document>
