@@ -114,8 +114,8 @@ class login extends PureComponent {
                 index: 0,
                 actions: [
                     NavigationActions.navigate({
-                        // routeName: "Drawer"
-                        routeName: "DouDou"
+                        routeName: "Drawer"
+                        // routeName: "DouDou"
                     })
                 ]
             })

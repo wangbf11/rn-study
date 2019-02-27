@@ -30,22 +30,23 @@ export default class MyCustomView extends Component{
         if (!this.props.onChangeColor) {
             return;
         }
-        //js 调安卓修改view的颜色
+        //js发送命令
         UIManager.dispatchViewManagerCommand(
-            findNodeHandle(this.refs.My_CustomView), // 找到与NativeUI组件对应的JS组件实例  []是可以加参数
+            findNodeHandle(this.refs.My_CustomView), // 对应原生方法 接受命令receiveCommand的3个参数 参数1:原生控件  参数2: commandId  参数3: 数组参数
             1,["red"]
         )
         this.props.onChangeColor();
     }
 }
-
+//参数类型定义
 MyCustomView.propTypes = {
     onChangeColor: PropTypes.func,
     color: PropTypes.string,  // 设置color属性
     ...View.propTypes, // 这里一定需要设置，不然会报错。has no propType for native prop。这个被坑了
 };
 
+// 拿到Native组件
 var RCTMyCustomView = requireNativeComponent('MyCustomView', MyCustomView,{
     nativeOnly: {onClick: true}
-});  // 拿到Native组件
+});
 
