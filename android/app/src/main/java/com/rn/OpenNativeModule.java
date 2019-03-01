@@ -1,6 +1,7 @@
 package com.rn;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
@@ -19,6 +20,7 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.google.gson.Gson;
 import com.hpplay.sdk.source.browse.api.ILelinkServiceManager;
 import com.hpplay.sdk.source.browse.api.LelinkServiceInfo;
+import com.paddy.pegasus.DownLoadActivity;
 import com.paddy.pegasus.data.DownloadInfo;
 import com.paddy.pegasus.data.ShiPinDownloadInfo;
 import com.paddy.pegasus.db.DatabaseManager;
@@ -89,9 +91,19 @@ public class OpenNativeModule extends ReactContextBaseJavaModule {
     @Override
     public String getName() {
         // 暴露给js调用的模块名
-        return "RNModule";
+        return "OpenNativeModule";
     }
 
+    @ReactMethod
+    public void openNativeVC() {
+        Intent intent = new Intent();
+        intent.setClass(getReactApplicationContext(), DownLoadActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getReactApplicationContext().startActivity(intent);
+
+//        mReactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+//                .emit("left","原生掉Rn");
+    }
 
     // 暴露给js调用的方法
     @ReactMethod

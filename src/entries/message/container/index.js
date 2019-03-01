@@ -176,13 +176,13 @@ class Index extends PureComponent {
     }
 
     startDownLoad() {
-        nativeModule.resumeDownLoad("www.apk","www.apkRNIcon",'http://app.mi.com/download/18076');
+        nativeModule.addDownloadMission("www.apk","www.apkRNIcon",'http://app.mi.com/download/18076');
     }
     pauseDownLoad() {
-        nativeModule.stopDownload('http://app.mi.com/download/18076');
+        nativeModule.pauseDownloadMissionWith('http://app.mi.com/download/18076');
     }
     getAllDownInfo() {
-        nativeModule.getAllDownloadInfo().then(data => {
+        nativeModule.getAllMissioncallBlock().then(data => {
             alert(JSON.stringify(data));
         });
         // nativeModule.getDownloadInfoByUrl('http://app.mi.com/download/18076',(res)=>{
