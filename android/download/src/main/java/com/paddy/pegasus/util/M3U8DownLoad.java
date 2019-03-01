@@ -100,11 +100,28 @@ public class M3U8DownLoad {
         }
     }
 
+    public static File createFile(String fileDir, String fileName){
+        File dir = new File(fileDir);
+        if (!dir.exists())
+            dir.mkdirs();
+
+        File file = new File(dir,fileName);
+        if (!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                Log.e("zp_test","文件创建失败！");
+            }
+        }
+        return file;
+    }
+
     /**
      *  获取m3u8分片文件地址
      */
     public static M3U8 getM3U8ByURL(String m3u8URL,File filepath) throws Exception{
         try {
+            filepath = createFile(filepath.getParent(), filepath.getName());
             FileOutputStream fos = new FileOutputStream(filepath);// 索引文件地址
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(fos));
             HttpURLConnection conn = (HttpURLConnection) new URL(m3u8URL).openConnection();
@@ -119,7 +136,12 @@ public class M3U8DownLoad {
                 float seconds = 0;
                 int mIndex;
                 while ((line = reader.readLine()) != null) {
-                    bufferedWriter.write(line+"\r\n");// 写入流中并换行
+                    String temp = line;
+                    if (line.startsWith("http") || (line.startsWith("/") && line.endsWith(".ts"))){
+                        String[] split = line.split("/");  //统一修改 m3u8文件 的ts地址和m3u8文件同级目录下
+                        temp = split[split.length - 1];
+                    }
+                    bufferedWriter.write(temp+"\r\n");// 写入流中并换行
                     if (line.startsWith("#")) {
                         if (line.startsWith("#EXTINF:")) {
                             line = line.substring(8);
@@ -135,7 +157,13 @@ public class M3U8DownLoad {
                         continue;
                     }
                     if (line.endsWith("m3u8")) {
-                        return getM3U8ByURL(basepath + line);
+                        File fileSub = new File(filepath.getParent() + line);
+                        if (!line.startsWith("/")){
+                            line = "/" + line;
+                        }
+                        M3U8 m3U8ByURL = getM3U8ByURL(basepath.substring(0, basepath.indexOf(".com/")) + ".com" + line, fileSub);
+                        fileSub.renameTo(filepath); //替换m3u8文件
+                        return m3U8ByURL;
                     }
                     ret.addTs(new M3U8.Ts(line, seconds));
                     seconds = 0;
@@ -234,5 +262,41 @@ public class M3U8DownLoad {
             return file.delete();
         }
         return true;
+    }
+
+    public static void copyDir(String sourcePath, String newPath) throws IOException {
+        File file = new File(sourcePath);
+        String[] filePath = file.list();
+
+        if (!(new File(newPath)).exists()) {
+            (new File(newPath)).mkdir();
+        }
+
+        for (int i = 0; i < filePath.length; i++) {
+            if ((new File(sourcePath + file.separator + filePath[i])).isDirectory()) {
+                copyDir(sourcePath  + file.separator  + filePath[i], newPath  + file.separator + filePath[i]);
+            }
+
+            if (new File(sourcePath  + file.separator + filePath[i]).isFile()) {
+                copyFile(sourcePath + file.separator + filePath[i], newPath + file.separator + filePath[i]);
+            }
+
+        }
+    }
+
+    public static void copyFile(String oldPath, String newPath) throws IOException {
+        File oldFile = new File(oldPath);
+        File file = new File(newPath);
+        FileInputStream in = new FileInputStream(oldFile);
+        FileOutputStream out = new FileOutputStream(file);;
+
+        byte[] buffer=new byte[2097152];
+        int readByte = 0;
+        while((readByte = in.read(buffer)) != -1){
+            out.write(buffer, 0, readByte);
+        }
+
+        in.close();
+        out.close();
     }
 }

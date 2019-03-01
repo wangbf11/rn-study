@@ -20,7 +20,7 @@ public class FileUtil {
     }
 
     /**
-     * 视频下载目录"/storage/emulated/0/Android/data/com.rnvideo/cache/file/"
+     * 视频下载目录"/storage/emulated/0/Android/data/rnvideo.com/cache/file/"
      * @return
      */
     public static String getExternalCacheDir(){

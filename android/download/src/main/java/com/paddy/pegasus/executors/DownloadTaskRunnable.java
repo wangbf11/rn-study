@@ -224,16 +224,34 @@ public class DownloadTaskRunnable implements Runnable {
 
         for (M3U8.Ts m3U8Ts :  tsList){
             currentCount ++;
-            File file = new File(TEMP_DIR + File.separator + m3U8Ts.getFile());
+            String file3 = m3U8Ts.getFile();
+            if (file3.startsWith("http")|| (file3.startsWith("/") && file3.endsWith(".ts"))){
+                String[] split = file3.split("/");
+                file3 = split[split.length - 1];
+            }
+            File file = new File(TEMP_DIR + File.separator + file3);
             if (!file.exists()) {// 下载过的就不管了
                 FileOutputStream fos = null;
                 InputStream inputStream = null;
                 try {
-                    HttpURLConnection conn = createConnection(basePath + m3U8Ts.getFile());
+                    String subUrl = "";
+                    if (m3U8Ts.getFile().startsWith("http")){
+                        subUrl = m3U8Ts.getFile();
+                    }else if (m3U8Ts.getFile().contains("/")){
+                        String line = m3U8Ts.getFile();
+                        if (!line.startsWith("/")){
+                            line = "/" + line;
+                        }
+                        subUrl = basePath.substring(0,basePath.indexOf(".com/")) +".com" + line;
+                    }else {
+                        subUrl = basePath + m3U8Ts.getFile();
+                    }
+                    HttpURLConnection conn = createConnection(subUrl);
                     totalLength = conn.getContentLength();
                     if (conn.getResponseCode() == 200) {
                         inputStream = conn.getInputStream();
-                        fos = new FileOutputStream(file);// 会自动创建文件
+                        File file1 = createFile(file.getParent(), file.getName());
+                        fos = new FileOutputStream(file1);// 会自动创建文件
                         int len = 0;
                         byte[] buf = new byte[1024];
                         while ((len = inputStream.read(buf)) != -1) {
