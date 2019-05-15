@@ -135,6 +135,20 @@ class Index extends PureComponent {
     }
 
     _renderHeader(){
+        this.state.scrollY.addListener(value => {
+            alert(
+                '动画结束，最终值：' + JSON.stringify(value)
+            )
+        })
+        // this.state.scrollY.stopAnimation(value => {
+        //     alert(
+        //         '动画结束，最终值：',
+        //         JSON.stringify(value),
+        //         [
+        //             {text: 'OK', onPress: () => {}}
+        //         ]
+        //     )
+        // });
         /*透明度映射,滚动0到43的时候下面透明变化*/
         let lbsOpaticy = this.state.scrollY.interpolate({
             inputRange: [0, this.SEARCH_BOX_Y],
